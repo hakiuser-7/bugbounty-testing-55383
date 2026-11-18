@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Application - XSS Vulnerable</title>
+</head>
+<body>
+    <h1>Welcome, <span id="user-name">Guest</span></h1>
+    <script>
+        // Vulnerable - user input reflected without sanitization
+        function loadUser(name) {
+            document.getElementById('user-name').innerText = name;
+        }
+    </script>
+    <form onsubmit="loadUser(document.getElementById('name').value); return false;">
+        <input type="text" id="name" placeholder="Enter your name">
+        <button type="submit">Load</button>
+    </form>
+    <hr>
+    <h2>Reflected Parameter:</h2>
+    <p>Parameter: <span class="reflected-value">{{name}}</span></p>
+</body>
+</html>
