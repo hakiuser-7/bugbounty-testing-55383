@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page - SQLi Test</title>
+</head>
+<body>
+    <h2>Login Form</h2>
+    <form action="/login" method="GET">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <button type="submit">Login</button>
+    </form>
+    <p>Query: SELECT * FROM users WHERE username = '${username}' AND password = '${password}'</p>
+</body>
+</html>
